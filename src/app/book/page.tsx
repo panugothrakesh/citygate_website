@@ -48,7 +48,7 @@ const BookingPage = () => {
     email: "",
     phone: "",
     nationality: "+91",
-    amountPaid: 2000,
+    amountPaid: 20000,
     noOfpeople: 1,
   });
 
@@ -64,7 +64,7 @@ const BookingPage = () => {
     console.log("Selected Range:", range);
     const days = range.endDate?.diff(range.startDate, "day");
     if (days) {
-      setUserDetails({ ...userDetails, amountPaid: days * 2000 });
+      setUserDetails({ ...userDetails, amountPaid: days * 20000 });
     }
   };
 
@@ -87,12 +87,12 @@ const BookingPage = () => {
 
     try {
       const { data: orderData } = await axios.post(
-        "https://citygate.vercel.app/api/order",
+        "https://citygate.in/api/order",
         { amount: userDetails.amountPaid }
       );
 
       const { data: keyData } = await axios.get(
-        "https://citygate.vercel.app/api/getKey"
+        "https://citygate.in/api/getKey"
       );
 
       const formattedRange = {
@@ -124,7 +124,7 @@ const BookingPage = () => {
             console.log("Payment Data:", paymentData);
 
             const saveResponse = await axios.post(
-              "https://citygate.vercel.app/api/payment",
+              "https://citygate.in/api/payment",
               paymentData
             );
 

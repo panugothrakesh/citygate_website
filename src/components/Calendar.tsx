@@ -16,7 +16,7 @@ const CustomCalender: React.FC<DateRangeSelectorProps> = ({ onRangeSelect }) => 
   useEffect(() => {
     // Fetch booked dates
     axios
-      .get("https://citygate.vercel.app/api/booking")
+      .get("https://citygate.in/api/booking")
       .then((response) => {
         if (response.data?.success && Array.isArray(response.data.bookedDates)) {
           setBookedDates(response.data.bookedDates);
